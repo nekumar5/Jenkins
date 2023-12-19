@@ -7,7 +7,7 @@ pipeline {
                     git 'https://github.com/nekumar5/jenkins.git'
                 }
             }
-        },
+        }
         stage('UNIT testing'){            
             steps{                
                 script{                    
