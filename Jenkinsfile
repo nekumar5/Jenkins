@@ -1,5 +1,12 @@
 pipeline {
-    agent any
+    // agent any
+    agent {
+        label 'Jenkins-Agent'
+    }
+    tools {
+        jdk 'Java17'
+        maven 'Maven3'
+    }
     stages{
         stage('Git Checkout'){
             steps{
@@ -9,17 +16,11 @@ pipeline {
             }
         }
 
-        // stage('UNIT testing'){
-        //     steps{
-        //         script{
-        //             sh 'mvn test'
-        //         }
-        //     }
-        // }
-
-        stage("UNIT testing"){
-            steps {
-                sh "mvn test"
+        stage('UNIT testing'){
+            steps{
+                script{
+                    sh 'mvn test'
+                }
             }
         }
     }
