@@ -4,7 +4,7 @@ pipeline {
         stage('Git Checkout'){
             steps{
                 script{
-                    git 'https://github.com/nekumar5/jenkins.git'
+                    git credentialsId: 'git', url: 'https://github.com/nekumar5/jenkins.git'
                 }
             }
         }
