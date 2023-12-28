@@ -92,5 +92,17 @@ pipeline {
                 }
             }
         }
+
+         stage('Push Image to Docker'){                
+            steps{                    
+                script{                        
+                    withCredentials([string(credentialsId: 'docker-hub-cred', variable: 'docker-hub')]) {
+                            sh 'docker login -u nekumar5 -p ${docker-hub}'
+                            sh 'docker image push nekumar5/$JOB_NAME:v1.$BUILD_ID'
+                            sh 'docker image pusg nekumar5/$JOB_NAME:latest'
+                        }
+                }
+            }
+        }
     }
 }
