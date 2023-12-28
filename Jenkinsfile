@@ -97,7 +97,7 @@ pipeline {
             steps{                    
                 script{                        
                     withCredentials([string(credentialsId: 'docker_hub_cred', variable: 'docker_hub')]) {
-                            sh "dockerhub cred ${docker_hub}"
+                            sh "echo API Key is ${docker_hub}"
                             sh "docker login -u nekumar5 -p ${docker_hub}"
                             sh 'docker image push nekumar5/$JOB_NAME:v1.$BUILD_ID'
                             sh 'docker image pusg nekumar5/$JOB_NAME:latest'
